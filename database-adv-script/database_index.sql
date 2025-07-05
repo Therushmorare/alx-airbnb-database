@@ -15,3 +15,11 @@ CREATE INDEX IF NOT EXISTS idx_bookings_user_property ON Bookings(user_id, prope
 CREATE INDEX IF NOT EXISTS idx_properties_location ON Properties(location);
 CREATE INDEX IF NOT EXISTS idx_properties_price ON Properties(price);
 CREATE INDEX IF NOT EXISTS idx_properties_status ON Properties(status);
+
+EXPLAIN ANALYZE
+SELECT b.*
+FROM Bookings b
+JOIN Users u ON b.user_id = u.id
+WHERE u.is_active = true
+ORDER BY b.booking_date DESC
+LIMIT 50;
