@@ -1,19 +1,19 @@
 
 -- Retrieve all bookings with user, property, and payment details
 EXPLAIN
-SELECT 
-    b.booking_id,
-    b.booking_date,
-    u.user_id,
-    u.username,
-    u.email,
-    p.property_id,
-    p.name AS property_name,
-    p.location,
-    pay.payment_id,
-    pay.amount,
-    pay.payment_date,
-    pay.status
+SELECT
+  b.booking_id,
+  b.booking_date,
+  u.user_id,
+  u.username,
+  u.email,
+  p.property_id,
+  p.name AS property_name,
+  p.location,
+  pay.payment_id,
+  pay.amount,
+  pay.payment_date,
+  pay.status
 FROM bookings b
 JOIN users u ON b.user_id = u.user_id
 JOIN properties p ON b.property_id = p.property_id
