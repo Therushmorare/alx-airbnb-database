@@ -1,6 +1,5 @@
 
 -- Retrieve all bookings with user, property, and payment details
-EXPLAIN
 SELECT
   b.booking_id,
   b.booking_date,
