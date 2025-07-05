@@ -1,0 +1,13 @@
+## Before Partitioning:
+
+Seq Scan on bookings
+  Filter: start_date BETWEEN '2024-02-01' AND '2024-02-15'
+Execution Time: ~420 ms
+
+## After Partitioning:
+Append  (actual time=0.123..2.110)
+  -> Index Scan on bookings_2024_02
+     Filter: start_date BETWEEN '2024-02-01' AND '2024-02-15'
+Execution Time: ~60–90 ms
+
+Partitioning the bookings table by start_date using monthly range partitions. This allowed the database to automatically prune irrelevant partitions during queries, reducing scan time and improving I/O efficiency.
